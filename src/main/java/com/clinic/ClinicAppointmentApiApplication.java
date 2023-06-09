@@ -46,6 +46,7 @@ public class ClinicAppointmentApiApplication {
 		String lastName,
 		String description,
 		String doctor,
+		String email,
 		LocalDate appointedDate
 	){
 
@@ -59,6 +60,7 @@ public class ClinicAppointmentApiApplication {
 		patient.setLastName(request.lastName());
 		patient.setDescription(request.description());
 		patient.setDoctor(request.doctor());
+		patient.setEmail(request.email());
 		patient.setAppointedDate(request.appointedDate());
 		patientRepository.save(patient);
 	}
@@ -77,7 +79,8 @@ public class ClinicAppointmentApiApplication {
 		patient.setLastName(request.lastName());
 		patient.setDescription(request.description());
 		patient.setDoctor(request.doctor());
-		patient.setAppointedDate(request.appointedDate);
+		patient.setEmail(request.email());
+		patient.setAppointedDate(request.appointedDate());
 		patientRepository.save(patient);
 	}
 

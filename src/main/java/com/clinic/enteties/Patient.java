@@ -24,9 +24,10 @@ public class Patient
     private String lastName;
     private String description;
     private String doctor;
+    private String email;
     private LocalDate appointedDate;
 
-    public Patient(Integer id,String firstName,String lastName, String description,String doctor ,LocalDate appointedDate)
+    public Patient(Integer id,String firstName,String lastName, String description,String doctor, String email,LocalDate appointedDate)
     {
         this.id=id;
         this.firstName=firstName;
@@ -34,6 +35,7 @@ public class Patient
         this.description=description;
         this.appointedDate=appointedDate;
         this.doctor=doctor;
+        this.email=email;
     }
 
     public Patient(){
@@ -85,18 +87,22 @@ public class Patient
 
     public void setAppointedDate(LocalDate appointedDate){this.appointedDate=appointedDate;}
 
+    public String getEmail(){return email;}
+
+    public void setEmail(String email){this.email=email;}
+
     @Override
     public boolean equals(Object o){
         if(this == o) return true;
         if(o == null || getClass() != o.getClass()) return false;
         Patient patient = (Patient) o;
-        return Objects.equals(id,patient.id) && Objects.equals(firstName, patient.firstName) && Objects.equals(lastName, patient.lastName) && Objects.equals(description,patient.description) && Objects.equals(appointedDate, patient.appointedDate) && Objects.equals(doctor, patient.doctor);
+        return Objects.equals(id,patient.id) && Objects.equals(firstName, patient.firstName) && Objects.equals(lastName, patient.lastName) && Objects.equals(description,patient.description) && Objects.equals(appointedDate, patient.appointedDate) && Objects.equals(doctor, patient.doctor) && Objects.equals(email,patient.email);
     }
 
     @Override
     public int hashCode ()
     {
-       return Objects.hash(id,firstName,lastName,description,doctor,appointedDate);
+       return Objects.hash(id,firstName,lastName,description,doctor,email,appointedDate);
     }
 
     @Override
@@ -108,6 +114,7 @@ public class Patient
                 ", lastName='" + lastName + '\'' +
                 ", description='" + description + '\''+
                 ", doctor='" + doctor +'\'' +
+                ", email='" + email + '\'' +
                 ", appointedDate='" + appointedDate + '\'' +
                 '}';
     }
