@@ -15,10 +15,12 @@ import javax.annotation.processing.Generated;
 import java.time.LocalDate;
 import java.util.List;
 
-import com.clinic.PatientRepository;
+import com.clinic.repositories.PatientRepository;
+import com.clinic.enteties.Patient;
+
 @SpringBootApplication
 @RestController
-@RequestMapping("api/v1/patients")
+@RequestMapping("api/patients")
 public class ClinicAppointmentApiApplication {
 
 	private final PatientRepository patientRepository;
