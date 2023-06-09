@@ -1,4 +1,4 @@
-# ---------------------------------------------------- Clinic Appointment Reservation  -----------------------------------------------------------
+# ---------------------------------------------------- Clinic Appointment Reservation  ---------------------------------------
 
 Clinic Appointment Reservation API is a RESTful web service that allows users to track and manage appointments made at a clinic. 
 There are severalendpoints which enable for creating, retrieving, updating, and deleting appointments. 
