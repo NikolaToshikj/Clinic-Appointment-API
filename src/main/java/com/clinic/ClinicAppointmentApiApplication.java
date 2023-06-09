@@ -11,18 +11,16 @@ import java.util.List;
 
 @SpringBootApplication
 @RestController
-@RequestMapping("Clinic/v1/patients")
+
 public class ClinicAppointmentApiApplication {
+
+
 
 	public static void main(String[] args)
 	{
 		SpringApplication.run(ClinicAppointmentApiApplication.class, args);
 	}
 
-	@GetMapping
-	public List<Patient> getPatients()
-	{
-		return List.of();
-	}
+
 
 }
