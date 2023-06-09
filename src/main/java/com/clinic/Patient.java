@@ -2,6 +2,7 @@ package com.clinic;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
 import java.util.Objects;
 
 @Entity
@@ -22,11 +23,17 @@ public class Patient
     private String firstName;
     private String lastName;
 
-    public Patient(Integer id,String firstName,String lastName)
+    private String description;
+
+    private LocalDate appointedDate;
+
+    public Patient(Integer id,String firstName,String lastName, String description, LocalDate appointedDate)
     {
         this.id=id;
         this.firstName=firstName;
         this.lastName=lastName;
+        this.description=description;
+        this.appointedDate=appointedDate;
     }
 
     public Patient(){
@@ -61,18 +68,32 @@ public class Patient
         this.lastName=lastName;
     }
 
+    public String getDescription()
+    {
+        return description;
+    }
+
+    public void setDescription(String lastName)
+    {
+        this.description=description;
+    }
+
+    public LocalDate getAppointedDate() {return appointedDate;}
+
+    public void setAppointedDate(LocalDate appointedDate){this.appointedDate=appointedDate;}
+
     @Override
     public boolean equals(Object o){
         if(this == o) return true;
         if(o == null || getClass() != o.getClass()) return false;
         Patient patient = (Patient) o;
-        return Objects.equals(id,patient.id) && Objects.equals(firstName, patient.firstName) && Objects.equals(lastName, patient.lastName);
+        return Objects.equals(id,patient.id) && Objects.equals(firstName, patient.firstName) && Objects.equals(lastName, patient.lastName) && Objects.equals(description,patient.description) && Objects.equals(appointedDate, patient.appointedDate);
     }
 
     @Override
     public int hashCode ()
     {
-       return Objects.hash(id,firstName,lastName);
+       return Objects.hash(id,firstName,lastName,description,appointedDate);
     }
 
     @Override
@@ -82,6 +103,8 @@ public class Patient
                 "id=" + id +
                 ", firstName='" + firstName + '\''+
                 ", lastName='" + lastName + '\'' +
+                ", description='" + description +
+                ", appointedDate='" + appointedDate +
                 '}';
     }
 }

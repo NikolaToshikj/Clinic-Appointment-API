@@ -2,6 +2,7 @@ package com.clinic;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cglib.core.Local;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import javax.annotation.processing.Generated;
+import java.time.LocalDate;
 import java.util.List;
 
 import com.clinic.PatientRepository;
@@ -39,7 +41,10 @@ public class ClinicAppointmentApiApplication {
 
 	record NewPatientRequest(
 		String firstName,
-		String lastName
+		String lastName,
+		String description,
+
+		LocalDate appointedDate
 	){
 
 	}
@@ -50,6 +55,8 @@ public class ClinicAppointmentApiApplication {
 		Patient patient = new Patient();
 		patient.setFirstName(request.firstName());
 		patient.setLastName(request.lastName());
+		patient.setDescription(request.description());
+		patient.setAppointedDate(request.appointedDate);
 		patientRepository.save(patient);
 	}
 
@@ -65,6 +72,8 @@ public class ClinicAppointmentApiApplication {
 		Patient patient = new Patient();
 		patient.setFirstName(request.firstName());
 		patient.setLastName(request.lastName());
+		patient.setDescription(request.description());
+		patient.setAppointedDate(request.appointedDate);
 		patientRepository.save(patient);
 	}
 
