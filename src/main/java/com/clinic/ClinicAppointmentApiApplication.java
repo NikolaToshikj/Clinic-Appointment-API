@@ -37,6 +37,35 @@ public class ClinicAppointmentApiApplication {
 		return patientRepository.findAll();
 	}
 
+	record NewPatientRequest(
+		String firstName,
+		String lastName
+	){
 
+	}
+
+	@PostMapping
+	public void addPatient(@RequestBody NewPatientRequest request)
+	{
+		Patient patient = new Patient();
+		patient.setFirstName(request.firstName());
+		patient.setLastName(request.lastName());
+		patientRepository.save(patient);
+	}
+
+	@DeleteMapping("{patientId}")
+	public void deletePatient(@PathVariable("patientId") Integer id)
+	{
+		patientRepository.deleteById(id);
+	}
+
+	@PutMapping("patientId")
+	public void updatePatient(@PathVariable("patientId") Integer id,NewPatientRequest request)
+	{
+		Patient patient = new Patient();
+		patient.setFirstName(request.firstName());
+		patient.setLastName(request.lastName());
+		patientRepository.save(patient);
+	}
 
 }
