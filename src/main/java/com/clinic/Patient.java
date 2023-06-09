@@ -22,18 +22,18 @@ public class Patient
     private Integer id;
     private String firstName;
     private String lastName;
-
     private String description;
-
+    private String doctor;
     private LocalDate appointedDate;
 
-    public Patient(Integer id,String firstName,String lastName, String description, LocalDate appointedDate)
+    public Patient(Integer id,String firstName,String lastName, String description,String doctor ,LocalDate appointedDate)
     {
         this.id=id;
         this.firstName=firstName;
         this.lastName=lastName;
         this.description=description;
         this.appointedDate=appointedDate;
+        this.doctor=doctor;
     }
 
     public Patient(){
@@ -78,6 +78,9 @@ public class Patient
         this.description=description;
     }
 
+    public String getDoctor(){return doctor;}
+    public void  setDoctor(String doctor){this.doctor=doctor;}
+
     public LocalDate getAppointedDate() {return appointedDate;}
 
     public void setAppointedDate(LocalDate appointedDate){this.appointedDate=appointedDate;}
@@ -87,13 +90,13 @@ public class Patient
         if(this == o) return true;
         if(o == null || getClass() != o.getClass()) return false;
         Patient patient = (Patient) o;
-        return Objects.equals(id,patient.id) && Objects.equals(firstName, patient.firstName) && Objects.equals(lastName, patient.lastName) && Objects.equals(description,patient.description) && Objects.equals(appointedDate, patient.appointedDate);
+        return Objects.equals(id,patient.id) && Objects.equals(firstName, patient.firstName) && Objects.equals(lastName, patient.lastName) && Objects.equals(description,patient.description) && Objects.equals(appointedDate, patient.appointedDate) && Objects.equals(doctor, patient.doctor);
     }
 
     @Override
     public int hashCode ()
     {
-       return Objects.hash(id,firstName,lastName,description,appointedDate);
+       return Objects.hash(id,firstName,lastName,description,doctor,appointedDate);
     }
 
     @Override
@@ -103,8 +106,9 @@ public class Patient
                 "id=" + id +
                 ", firstName='" + firstName + '\''+
                 ", lastName='" + lastName + '\'' +
-                ", description='" + description +
-                ", appointedDate='" + appointedDate +
+                ", description='" + description + '\''+
+                ", doctor='" + doctor +'\'' +
+                ", appointedDate='" + appointedDate + '\'' +
                 '}';
     }
 }
