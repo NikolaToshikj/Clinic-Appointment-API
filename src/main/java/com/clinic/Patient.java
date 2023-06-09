@@ -10,7 +10,8 @@ public class Patient
     @Id
     @SequenceGenerator(
             name = "patient_id_sequence",
-            sequenceName = "patient_id_sequence"
+            sequenceName = "patient_id_sequence",
+            allocationSize=1
     )
 
     @GeneratedValue(

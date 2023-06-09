@@ -19,7 +19,12 @@ import com.clinic.PatientRepository;
 @RequestMapping("api/v1/patients")
 public class ClinicAppointmentApiApplication {
 
+	private final PatientRepository patientRepository;
 
+	public ClinicAppointmentApiApplication(PatientRepository patientRepository)
+	{
+		this.patientRepository=patientRepository;
+	}
 
 	public static void main(String[] args)
 	{
@@ -29,7 +34,7 @@ public class ClinicAppointmentApiApplication {
 	@GetMapping
 	public List<Patient> getPatients()
 	{
-		return List.of();
+		return patientRepository.findAll();
 	}
 
 
