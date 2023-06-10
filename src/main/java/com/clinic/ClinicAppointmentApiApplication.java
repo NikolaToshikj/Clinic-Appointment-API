@@ -14,6 +14,7 @@ import org.springframework.web.server.ResponseStatusException;
 import javax.annotation.processing.Generated;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 import com.clinic.repositories.PatientRepository;
 import com.clinic.enteties.Patient;
@@ -72,16 +73,17 @@ public class ClinicAppointmentApiApplication {
 	}
 
 	@PutMapping("patientId")
-	public void updatePatient(@PathVariable("patientId") Integer id,NewPatientRequest request)
+	public void updatePatient(@PathVariable("patientId") Integer id,@RequestBody NewPatientRequest request)
 	{
-		Patient patient = new Patient();
-		patient.setFirstName(request.firstName());
-		patient.setLastName(request.lastName());
-		patient.setDescription(request.description());
-		patient.setDoctor(request.doctor());
-		patient.setEmail(request.email());
-		patient.setAppointedDate(request.appointedDate());
-		patientRepository.save(patient);
+		Patient patientUpdate = patientRepository.getById(id);
+		patientUpdate.setFirstName(request.firstName());
+		patientUpdate.setLastName(request.lastName());
+		patientUpdate.setDescription(request.description());
+		patientUpdate.setDoctor(request.doctor());
+		patientUpdate.setEmail(request.email());
+		patientUpdate.setAppointedDate(request.appointedDate());
+		patientRepository.save(patientUpdate);
 	}
+
 
 }
